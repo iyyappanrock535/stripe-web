@@ -31,8 +31,8 @@ useEffect(() => {
   return (<BrowserRouter>
     <Routes>
     <Route path="/" element={<div>Hi....</div>} />
-        <Route path="home" element={<Stripe/>} />
-        <Route path="done" element={<div>Completed!...</div>} />
+        <Route path="/home" element={<Stripe/>} />
+        <Route path="/done" element={<div>Completed!...</div>} />
       
     </Routes>
   </BrowserRouter> 

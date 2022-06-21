@@ -19,7 +19,6 @@ const params = new URLSearchParams(windowUrl);
   });
 }
 useEffect(() => {
- console.log('key,price,acc_id key,price,acc_id ',key,price,acc_id,props,params.get('key') );
 }, [])
 
   const options = {

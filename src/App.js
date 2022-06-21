@@ -16,7 +16,6 @@ import Stripe from './stripe';
 function App(props) {
   const windowUrl = window.location.search;
 const params = new URLSearchParams(windowUrl);
-  let { key,price,acc_id } = useParams();
   if(params.get('acc_id')){
     const stripePromise = loadStripe('pk_test_Vl7NdHPf2yLEUDou4TTJTG0N00F35InABj',{
       stripeAccount:params.get('acc_id')

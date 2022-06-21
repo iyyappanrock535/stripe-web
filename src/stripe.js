@@ -14,10 +14,11 @@ function App(props) {
   const windowUrl = window.location.search;
 const params = new URLSearchParams(windowUrl);
   let { key,price,acc_id } = useParams();
+  if(params.get('acc_id')){
   const stripePromise = loadStripe('pk_test_Vl7NdHPf2yLEUDou4TTJTG0N00F35InABj',{
   stripeAccount:params.get('acc_id')
   });
-  
+}
 useEffect(() => {
  console.log('key,price,acc_id key,price,acc_id ',key,price,acc_id,props,params.get('key') );
 }, [])
@@ -30,12 +31,12 @@ useEffect(() => {
   };
 
   return (<div className="ff">
-    <Elements   stripe={loadStripe('pk_test_Vl7NdHPf2yLEUDou4TTJTG0N00F35InABj',{
+   {params.get('key') ? <Elements   stripe={loadStripe('pk_test_Vl7NdHPf2yLEUDou4TTJTG0N00F35InABj',{
   stripeAccount:params.get('acc_id')
   })} options={options}>
       <CheckoutForm price={params.get('price')}/>
       
-    </Elements></div>
+    </Elements>:"Ready TO prepare"}</div>
   );
 };
 export default App;

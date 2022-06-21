@@ -17,26 +17,23 @@ function App(props) {
   const windowUrl = window.location.search;
 const params = new URLSearchParams(windowUrl);
   let { key,price,acc_id } = useParams();
-  const stripePromise = loadStripe('pk_test_Vl7NdHPf2yLEUDou4TTJTG0N00F35InABj',{
-  stripeAccount:params.get('acc_id')
-  });
+  if(params.get('acc_id')){
+    const stripePromise = loadStripe('pk_test_Vl7NdHPf2yLEUDou4TTJTG0N00F35InABj',{
+      stripeAccount:params.get('acc_id')
+      });
+  }
+  
   
 useEffect(() => {
- console.log('key,price,acc_id key,price,acc_id ',key,price,acc_id,props,params.get('key') );
 }, [])
 
-  const options = {
-    // passing the client secret obtained in step 2
-    clientSecret: params.get('key'),
-    // Fully customizable with appearance API.
-    appearance: {/*...*/},
-  };
+
 
   return (<BrowserRouter>
     <Routes>
-     
+    <Route path="/" element={<div>Hi....</div>} />
         <Route path="home" element={<Stripe/>} />
-        <Route path="done" children={()=><div>Completed!...</div>} />
+        <Route path="done" element={<div>Completed!...</div>} />
       
     </Routes>
   </BrowserRouter> 
